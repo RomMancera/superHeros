@@ -1,0 +1,49 @@
+<h1> List of Super Heroes </h1>
+<hr>
+<div class="row">
+    <div class="col text-right">
+        <button routerLink="/heroe/nuevo" type="button" class="btn btn-primary">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Agregar
+        </button>
+    </div>
+</div>
+
+<table class="table mt-3">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Alterego</th>
+            <th scope="col">Poder</th>
+            <th scope="col">Estatus</th>
+            <th scope="col">Opciones</th>
+        </tr>
+        <img *ngIf="verheros" src="./../../../assets/download.gif" alt="" class="text-center">
+    </thead>
+    <tbody>
+        <tr *ngFor="let hero of heroes; let i= index">
+            <th scope="row">{{i+1}}</th>
+            <td>{{hero.nombre}}</td>
+            <td>{{hero.alterego}}</td>
+            <td>{{hero.poder}}</td>
+            <td><span *ngIf="hero.vivo" class="badge badge-success">Vivo</span>
+                <span *ngIf="!hero.vivo" class="badge badge-danger">muerto</span></td>
+            <td>
+                <button [routerLink]="['/heroe', hero.id]" type="button" class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                <button (click)="borrarHeroe(hero, i)" type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+
+            </td>
+
+        </tr>
+
+
+    </tbody>
+</table>
+
+<div class="alert alert-success" role="alert" *ngIf="hay">
+    <h4 class="alert-heading">No hay ningun super Heroe</h4>
+    <p>Puedes agregar un nuevo superheroe dandole en en boton de la parte superiror derecha que dice "agregar"</p>
+    <hr>
+    <p class="mb-0">Rellena todos los datos del formulario y guarda tu super heroe</p>
+</div>

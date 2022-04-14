@@ -1,0 +1,52 @@
+<h1> Name of Super Heroes </h1>
+<hr>
+<div class="row">
+    <div class="col text-right">
+        <button routerLink="/heroes" type="button" class="btn btn-danger">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Regresar
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <form (ngSubmit)="guardar(form)" #form="ngForm">
+            <div class="form-group">
+                <label>firebase ID</label>
+                <input type="text" class="form-control" disabled="disabled" [(ngModel)]="heroe.id" name="id">
+                <small class="form-text text-muted">Este campo es autogenerado</small>
+            </div>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control" placeholder="Nombre del superheroe" [(ngModel)]="heroe.nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label>Alterego</label>
+                <input type="text" class="form-control" placeholder="alterego" [(ngModel)]="heroe.alterego" name="alterego" required>
+            </div>
+            <div class="form-group">
+                <label>Poder</label>
+                <input type="text" class="form-control" placeholder="Power" [(ngModel)]="heroe.poder" name="poder" required>
+            </div>
+            <div class="form-group">
+                <label>Status</label>
+                <br>
+                <button *ngIf="heroe.vivo" (click)="heroe.vivo= false" type="button" class="btn btn-outline-success  w-50">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    Vivo
+                </button>
+                <button *ngIf="!heroe.vivo" (click)="heroe.vivo= true" type="button" class="btn btn-outline-danger  w-50">
+                <i class="fas fa-skull"></i>
+                    Muerto
+                </button>
+            </div>
+            <hr>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary w-25">
+                    <i class="fas fa-save"></i>
+                    Guardar</button>
+            </div>
+
+        </form>
+    </div>
+</div>
